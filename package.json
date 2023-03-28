@@ -1,0 +1,24 @@
+{
+  "name": "qr_gen_vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "exports-loader": "^4.0.0",
+    "qr.js": "^0.0.0",
+    "qrcode": "^1.5.1",
+    "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "crypto-js": "^4.1.1",
+    "firebase": "^9.18.0",
+    "qrcode-svg": "^1.1.0",
+    "uuidv4": "^6.2.13"
+  }
+}
