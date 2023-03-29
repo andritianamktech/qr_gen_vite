@@ -1,5 +1,12 @@
 import { db } from "./firebase";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  updateDoc,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 import QRCode from "qrcode";
 // import qr from "qr.js";
 
@@ -151,15 +158,27 @@ formTicket.addEventListener("submit", (event) => {
       link = null;
       dataUrl = null;
 
-      setDoc(doc(db, "qr", qr_string), {
-        band_name: bandName,
-        type: type,
-        place: prefix + i,
-        filename: qr_string + ".png",
-        uuid: uuid,
-      });
+      // setDoc(doc(db, "qr", qr_string), {
+      //   band_name: bandName,
+      //   type: type,
+      //   place: prefix + i,
+      //   filename: qr_string + ".png",
+      //   uuid: uuid,
+      // });
     });
   }
 });
+
+function updateDocument(){
+  const querySnapshot = await getDocs(collection(db, "qr"));
+  querySnapshot.forEach((document) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(document.id, " => ", document.data());
+    let ticketRef = doc(db, "qr", document.id);
+    updateDoc(ticketRef, {
+      status: "initialized",
+    });
+  });
+}
 
 // setupCounter(document.querySelector('#counter'))
