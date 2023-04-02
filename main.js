@@ -169,8 +169,8 @@ formTicket.addEventListener("submit", (event) => {
   }
 });
 
-function updateDocument(){
-  const querySnapshot = await getDocs(collection(db, "qr"));
+function updateDocument() {
+  // const querySnapshot = await getDocs(collection(db, "qr"));
   querySnapshot.forEach((document) => {
     // doc.data() is never undefined for query doc snapshots
     console.log(document.id, " => ", document.data());
